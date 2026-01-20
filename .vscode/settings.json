@@ -1,0 +1,412 @@
+{
+    // 配置 MSYS2 为 Cursor 的默认终端
+    "terminal.integrated.defaultProfile.windows": "MSYS2",
+    // MSYS2 终端配置
+    "terminal.integrated.profiles.windows": {
+        "MSYS2": {
+            "path": "C:\\msys64\\msys2_shell.cmd",
+            "args": [
+                "-defterm",
+                "-here",
+                "-no-start",
+                "-mingw64",
+                "-shell",
+                "zsh"
+            ],
+            "env": {
+                "CHERE_INVOKING": "1",
+                "MSYSTEM": "MINGW64"
+            },
+            "icon": "terminal"
+        },
+        "MSYS2 UCRT64": {
+            "path": "C:\\msys64\\ucrt64.exe",
+            "args": [],
+            "icon": "terminal"
+        },
+        "MSYS2 MSYS": {
+            "path": "C:\\msys64\\msys2_shell.cmd",
+            "args": [
+                "-defterm",
+                "-here",
+                "-no-start",
+                "-msys",
+                "-shell",
+                "zsh"
+            ],
+            "env": {
+                "CHERE_INVOKING": "1",
+                "MSYSTEM": "MSYS"
+            },
+            "icon": "terminal"
+        }
+    },
+    // 编辑器字体设置
+    "editor.fontSize": 18,
+    "editor.fontFamily": "Consolas, 'Microsoft YaHei Mono', 'Courier New', monospace",
+    "editor.lineHeight": 1.6,
+    // 终端设置
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.fontFamily": "Consolas, 'Microsoft YaHei Mono', 'Courier New', monospace",
+    "terminal.integrated.fontSize": 18,
+    "terminal.integrated.encoding": "utf8",
+    // Git 配置 - 确保使用 Windows Git（不会影响仓库）
+    "git.path": "C:\\Program Files\\Git\\cmd\\git.exe",
+    // 文件编码设置
+    "files.encoding": "utf8",
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+    // 禁用Insert键切换覆盖模式（解决替换模式问题）
+    "editor.overtypeMode": false,
+    // 护眼色背景配置（优化版：米色护眼方案）
+    "workbench.colorCustomizations": {
+        // 编辑器背景色 - 更浅的米色护眼色（更柔和，类似纸张，减少视觉疲劳）
+        "editor.background": "#FEFEF8",
+        // 编辑器文字颜色 - 深棕色，对比度适中，更护眼
+        "editor.foreground": "#3E2723",
+        // 编辑器活动组背景
+        "editorGroupHeader.tabsBackground": "#F9F9F0",
+        // 标签页文字颜色 - 使用深棕色，更护眼
+        "tab.activeForeground": "#3E2723",
+        "tab.inactiveForeground": "#5D4037",
+        // 侧边栏背景
+        "sideBar.background": "#FEFEF8",
+        // 侧边栏文字颜色 - 使用深棕色
+        "sideBar.foreground": "#3E2723",
+        "sideBarTitle.foreground": "#3E2723",
+        // 活动栏背景
+        "activityBar.background": "#F9F9F0",
+        "activityBar.foreground": "#3E2723",
+        // 状态栏背景和文字 - 使用米色系
+        "statusBar.background": "#F5F0E8",
+        "statusBar.foreground": "#3E2723",
+        // 面板背景和文字 - 使用米色系
+        "panel.background": "#FEFEF8",
+        "panel.foreground": "#3E2723",
+        "panelTitle.activeForeground": "#3E2723",
+        // 终端背景和文字 - 使用米色系
+        "terminal.background": "#FEFEF8",
+        "terminal.foreground": "#3E2723",
+        // 列表项文字颜色 - 使用深棕色
+        "list.activeSelectionForeground": "#3E2723",
+        "list.inactiveSelectionForeground": "#3E2723",
+        // 输入框文字颜色 - 使用深棕色
+        "input.foreground": "#3E2723",
+        "input.background": "#FEFEF8",
+        // 按钮文字颜色 - 使用深棕色
+        "button.foreground": "#3E2723",
+        "button.background": "#F5F0E8",
+        "button.hoverBackground": "#E8E0D5",
+        // 标题栏配置 - 使用深棕色文字
+        "titleBar.activeBackground": "#F9F9F0",
+        "titleBar.activeForeground": "#3E2723",
+        "titleBar.inactiveBackground": "#FEFEF8",
+        "titleBar.inactiveForeground": "#5D4037",
+        "titleBar.border": "#E8E0D5",
+        // 菜单栏配置 - 使用深棕色文字
+        "menubar.selectionForeground": "#3E2723",
+        "menubar.selectionBackground": "#F9F9F0",
+        "menu.foreground": "#3E2723",
+        "menu.background": "#FEFEF8",
+        "menu.selectionForeground": "#3E2723",
+        "menu.selectionBackground": "#F5F0E8",
+        "menu.separatorBackground": "#E8E0D5",
+        // 下拉菜单和选择框 - 使用深棕色文字
+        "dropdown.foreground": "#3E2723",
+        "dropdown.background": "#FEFEF8",
+        "dropdown.listBackground": "#FEFEF8",
+        "dropdown.border": "#E8E0D5",
+        // 编辑器相关 - 降低高亮透明度，确保文字清晰可见
+        "editor.lineHighlightBackground": "#F9F9F040",
+        "editor.selectionBackground": "#F5F0E850",
+        "editor.selectionHighlightBackground": "#F9F9F040",
+        "editorCursor.foreground": "#3E2723",
+        "editorCursor.background": "#FEFEF8",
+        "editorLineNumber.foreground": "#8D6E63",
+        "editorLineNumber.activeForeground": "#3E2723",
+        "editorIndentGuide.background": "#E8E0D5",
+        "editorIndentGuide.activeBackground": "#D5C9BC",
+        "editorWhitespace.foreground": "#F5F0E8",
+        "editorWidget.background": "#FEFEF8",
+        "editorWidget.foreground": "#3E2723",
+        "editorSuggestWidget.background": "#FEFEF8",
+        "editorSuggestWidget.foreground": "#3E2723",
+        "editorSuggestWidget.selectedBackground": "#F9F9F060",
+        "editorHoverWidget.background": "#FEFEF8",
+        "editorHoverWidget.foreground": "#3E2723",
+        "editorBracketMatch.background": "#F5F0E8",
+        "editorBracketMatch.border": "#6D4C41",
+        // 标签页更多配置
+        "tab.activeBackground": "#F9F9F0",
+        "tab.inactiveBackground": "#FCFCF5",
+        "tab.border": "#E8E0D5",
+        "tab.activeBorder": "#6D4C41",
+        "tab.hoverBackground": "#F5F0E8",
+        "tab.hoverForeground": "#2E1B14",
+        // 侧边栏更多配置
+        "sideBar.border": "#E8E0D5",
+        "sideBarSectionHeader.background": "#F5F0E8",
+        "sideBarSectionHeader.foreground": "#2E1B14",
+        "sideBarSectionHeader.border": "#E8E0D5",
+        // 活动栏更多配置
+        "activityBar.border": "#E8E0D5",
+        "activityBar.activeBorder": "#6D4C41",
+        "activityBar.inactiveForeground": "#8D6E63",
+        "activityBarBadge.background": "#1A5C8C",
+        "activityBarBadge.foreground": "#FFFFFF",
+        // 状态栏更多配置
+        "statusBar.border": "#D5C9BC",
+        "statusBar.noFolderBackground": "#E8E0D5",
+        "statusBar.debuggingBackground": "#8B4513",
+        "statusBar.debuggingForeground": "#FFFFFF",
+        "statusBarItem.prominentBackground": "#F5F0E8",
+        "statusBarItem.prominentForeground": "#3E2723",
+        "statusBarItem.hoverBackground": "#E8E0D5",
+        // 面板更多配置
+        "panel.border": "#E8E0D5",
+        "panelTitle.inactiveForeground": "#8D6E63",
+        "panelInput.border": "#E8E0D5",
+        // 列表更多配置 - 使用深棕色文字，降低选中背景透明度
+        "list.background": "#FEFEF8",
+        "list.foreground": "#3E2723",
+        "list.hoverBackground": "#F9F9F050",
+        "list.hoverForeground": "#3E2723",
+        "list.activeSelectionBackground": "#F5F0E850",
+        "list.inactiveSelectionBackground": "#F9F9F050",
+        "list.focusBackground": "#F5F0E850",
+        "list.focusForeground": "#3E2723",
+        "list.inactiveFocusBackground": "#F5F0E8",
+        "list.highlightForeground": "#1A5C8C",
+        "list.invalidItemForeground": "#8B0000",
+        "list.errorForeground": "#8B0000",
+        "list.warningForeground": "#B8860B",
+        // 输入框更多配置
+        "input.border": "#E8E0D5",
+        "inputOption.activeBorder": "#6D4C41",
+        "inputValidation.errorBackground": "#FFE8E8",
+        "inputValidation.errorBorder": "#8B0000",
+        "inputValidation.infoBackground": "#E8F5E9",
+        "inputValidation.infoBorder": "#1A5C8C",
+        "inputValidation.warningBackground": "#FFF8DC",
+        "inputValidation.warningBorder": "#B8860B",
+        // 滚动条
+        "scrollbar.shadow": "#E8E0D5",
+        "scrollbarSlider.background": "#E8E0D580",
+        "scrollbarSlider.hoverBackground": "#D5C9BC80",
+        "scrollbarSlider.activeBackground": "#8D6E6380",
+        // 通知和提示 - 使用深棕色文字
+        "notificationCenter.border": "#F5F0E8",
+        "notificationCenterHeader.background": "#F9F9F0",
+        "notificationToast.border": "#F5F0E8",
+        "notifications.background": "#FEFEF8",
+        "notifications.foreground": "#3E2723",
+        "notifications.border": "#F5F0E8",
+        "notificationCenterHeader.foreground": "#3E2723",
+        "notificationLink.foreground": "#1A5C8C",
+        // 进度条
+        "progressBar.background": "#6D4C41",
+        // 面包屑导航 - 使用深棕色文字
+        "breadcrumb.foreground": "#5D4037",
+        "breadcrumb.background": "#FEFEF8",
+        "breadcrumb.focusForeground": "#3E2723",
+        "breadcrumb.activeSelectionForeground": "#3E2723",
+        "breadcrumbPicker.background": "#FEFEF8",
+        // 代码片段和自动完成
+        "editorSnippetTabstopHighlightBackground": "#F5F0E8",
+        "editorSnippetTabstopHighlightBorder": "#6D4C41",
+        "editorSnippetFinalTabstopHighlightBackground": "#E8E0D5",
+        "editorSnippetFinalTabstopHighlightBorder": "#6D4C41",
+        // 查找和替换 - 大幅降低高亮透明度
+        "editor.findMatchBackground": "#FFF8DC60",
+        "editor.findMatchHighlightBackground": "#FFF8DC30",
+        "editor.findRangeHighlightBackground": "#FEFEF830",
+        "editorGutter.modifiedBackground": "#B8860B",
+        "editorGutter.addedBackground": "#6D4C41",
+        "editorGutter.deletedBackground": "#8B0000",
+        // 终端更多配置 - 使用深棕色文字
+        "terminal.foreground": "#3E2723",
+        "terminalCursor.foreground": "#3E2723",
+        "terminal.selectionBackground": "#F9F9F050",
+        "terminal.border": "#E8E0D5",
+        // Git 相关
+        "gitDecoration.modifiedResourceForeground": "#B8860B",
+        "gitDecoration.deletedResourceForeground": "#8B0000",
+        "gitDecoration.untrackedResourceForeground": "#6D4C41",
+        "gitDecoration.ignoredResourceForeground": "#BCAAA4",
+        "gitDecoration.conflictingResourceForeground": "#8B008B",
+        // 调试相关
+        "debugToolBar.background": "#FEFEF8",
+        "debugToolBar.border": "#E8E0D5",
+        "debugIcon.startForeground": "#6D4C41",
+        "debugIcon.pauseForeground": "#1A5C8C",
+        "debugIcon.stopForeground": "#8B0000",
+        "debugIcon.restartForeground": "#6D4C41",
+        "debugIcon.stepOverForeground": "#1A5C8C",
+        "debugIcon.stepIntoForeground": "#1A5C8C",
+        "debugIcon.stepOutForeground": "#1A5C8C",
+        "debugIcon.continueForeground": "#6D4C41",
+        // 扩展和设置 - 使用深棕色文字
+        "settings.headerForeground": "#3E2723",
+        "settings.modifiedItemIndicator": "#B8860B",
+        "settings.dropdownBackground": "#FEFEF8",
+        "settings.dropdownForeground": "#3E2723",
+        "settings.checkboxBackground": "#FEFEF8",
+        "settings.checkboxForeground": "#3E2723",
+        "settings.textInputBackground": "#FEFEF8",
+        "settings.textInputForeground": "#3E2723",
+        // 欢迎页面
+        "welcomePage.buttonBackground": "#F5F0E8",
+        "welcomePage.buttonHoverBackground": "#E8E0D5",
+        // 分割线
+        "editorGroup.border": "#E8E0D5",
+        "editorGroupHeader.border": "#E8E0D5",
+        "sideBarSectionHeader.border": "#E8E0D5"
+    },
+    // 编辑器语法高亮颜色（适配护眼色背景）
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": [
+                    "comment",
+                    "punctuation.definition.comment"
+                ],
+                "settings": {
+                    "foreground": "#8D6E63",
+                    "fontStyle": "italic"
+                }
+            },
+            {
+                "scope": [
+                    "keyword",
+                    "storage.type",
+                    "storage.modifier"
+                ],
+                "settings": {
+                    "foreground": "#1A5C8C",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": [
+                    "string",
+                    "string.quoted"
+                ],
+                "settings": {
+                    "foreground": "#8B4513"
+                }
+            },
+            {
+                "scope": [
+                    "constant.numeric",
+                    "constant.language"
+                ],
+                "settings": {
+                    "foreground": "#B8860B"
+                }
+            },
+            {
+                "scope": [
+                    "constant.other",
+                    "entity.name.constant",
+                    "variable.other.constant"
+                ],
+                "settings": {
+                    "foreground": "#8B4513",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": [
+                    "entity.name.function",
+                    "support.function"
+                ],
+                "settings": {
+                    "foreground": "#1A5C8C",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": [
+                    "variable",
+                    "variable.other",
+                    "variable.parameter"
+                ],
+                "settings": {
+                    "foreground": "#3E2723"
+                }
+            },
+            {
+                "scope": [
+                    "entity.name.type",
+                    "support.type"
+                ],
+                "settings": {
+                    "foreground": "#8B008B"
+                }
+            }
+        ]
+    },
+    // C/C++ IntelliSense 配置
+    // 禁用 C/C++ 扩展的 IntelliSense，使用 clangd 代替
+    "C_Cpp.intelliSenseEngine": "Disabled",
+    "C_Cpp.autocomplete": "disabled",
+    "C_Cpp.errorSquiggles": "disabled",
+    "C_Cpp.suggestSnippets": true,
+    "C_Cpp.enhancedColorization": "enabled",
+    // C/C++ 代码格式化配置
+    "C_Cpp.clang_format_path": "C:\\Program Files\\LLVM\\bin\\clang-format.exe",
+    "C_Cpp.clang_format_style": "file",
+    "editor.formatOnSave": true,
+    "C_Cpp.default.browse.limitSymbolsToIncludedHeaders": false,
+    "C_Cpp.default.systemIncludePath": [],
+    "C_Cpp.default.defines": [
+        "USE_HAL_DRIVER",
+        "STM32L431xx"
+    ],
+    "C_Cpp.default.includePath": [
+        "${workspaceFolder}/**",
+        "${workspaceFolder}/Core/Inc",
+        "${workspaceFolder}/HardwareDriver",
+        "${workspaceFolder}/Drivers/STM32L4xx_HAL_Driver/Inc",
+        "${workspaceFolder}/Drivers/STM32L4xx_HAL_Driver/Inc/Legacy",
+        "${workspaceFolder}/Drivers/CMSIS/Device/ST/STM32L4xx/Include",
+        "${workspaceFolder}/Drivers/CMSIS/Include"
+    ],
+    // 确保符号数据库正常工作
+    "C_Cpp.default.browse.databaseFilename": "${workspaceFolder}/.vscode/browse.vc.db",
+    "C_Cpp.default.browse.path": [
+        "${workspaceFolder}"
+    ],
+    // 启用所有语言功能
+    "C_Cpp.intelliSenseUpdateDelay": 2000,
+    "C_Cpp.workspaceParsingPriority": "highest",
+    // 禁用平台包下载提示和自动下载
+    "C_Cpp.updateChannel": "Default",
+    "C_Cpp.intelliSenseEngineFallback": "Disabled",
+    "C_Cpp.disableAutomaticInstallation": true,
+    // clangd 配置
+    // clangd 已通过 MSYS2 安装
+    "clangd.path": "C:\\msys64\\mingw64\\bin\\clangd.exe",
+    "clangd.arguments": [
+        "--background-index",
+        "--clang-tidy",
+        "--completion-style=detailed",
+        "--header-insertion=iwyu",
+        "--header-insertion-decorators",
+        "--format-style=file"
+    ],
+    "clangd.fallbackFlags": [
+        "-std=c11"
+    ],
+    // clangd 格式化配置（如果使用 clangd 扩展作为格式化器）
+    "clangd.onConfigChanged": "restart",
+    // Vim 插件设置（如果安装了Vim插件，禁用替换模式快捷键）
+    "vim.overrideCopy": false,
+    "vim.handleKeys": {
+        "<Insert>": false
+    },
+    // 编辑器行为设置 - 确保始终使用插入模式
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    "editor.tabSize": 4
+}
