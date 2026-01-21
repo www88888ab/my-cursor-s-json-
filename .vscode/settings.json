@@ -118,8 +118,8 @@
         "dropdown.border": "#E8E0D5",
         // 编辑器相关 - 降低高亮透明度，确保文字清晰可见
         "editor.lineHighlightBackground": "#F9F9F040",
-        "editor.selectionBackground": "#F5F0E850",
-        "editor.selectionHighlightBackground": "#F9F9F040",
+        "editor.selectionBackground": "#E0D7C0A0",
+        "editor.selectionHighlightBackground": "#D8CCB880",
         "editorCursor.foreground": "#3E2723",
         "editorCursor.background": "#FEFEF8",
         "editorLineNumber.foreground": "#8D6E63",
@@ -347,16 +347,30 @@
         ]
     },
     // C/C++ IntelliSense 配置
-    // 禁用 C/C++ 扩展的 IntelliSense，使用 clangd 代替
+    // 让 cpptools 不抢语义/跳转，全部交给 clangd
     "C_Cpp.intelliSenseEngine": "Disabled",
     "C_Cpp.autocomplete": "disabled",
     "C_Cpp.errorSquiggles": "disabled",
-    "C_Cpp.suggestSnippets": true,
+    "C_Cpp.suggestSnippets": false,
     "C_Cpp.enhancedColorization": "enabled",
     // C/C++ 代码格式化配置
     "C_Cpp.clang_format_path": "C:\\Program Files\\LLVM\\bin\\clang-format.exe",
     "C_Cpp.clang_format_style": "file",
+    "C_Cpp.formatting": "clangFormat",
     "editor.formatOnSave": true,
+    // 默认格式化程序设置（使用 clangd 扩展）
+    "[c]": {
+        "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
+    },
+    "[cpp]": {
+        "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
+    },
+    "[h]": {
+        "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
+    },
+    "[hpp]": {
+        "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
+    },
     "C_Cpp.default.browse.limitSymbolsToIncludedHeaders": false,
     "C_Cpp.default.systemIncludePath": [],
     "C_Cpp.default.defines": [
@@ -392,14 +406,15 @@
         "--clang-tidy",
         "--completion-style=detailed",
         "--header-insertion=iwyu",
-        "--header-insertion-decorators",
-        "--format-style=file"
+        "--header-insertion-decorators"
     ],
     "clangd.fallbackFlags": [
         "-std=c11"
     ],
-    // clangd 格式化配置（如果使用 clangd 扩展作为格式化器）
     "clangd.onConfigChanged": "restart",
+    // 禁用 clangd 的格式化，使用 C/C++ 扩展的 clang-format
+    // 允许 clangd 负责格式化
+    "clangd.formatting": "enabled",
     // Vim 插件设置（如果安装了Vim插件，禁用替换模式快捷键）
     "vim.overrideCopy": false,
     "vim.handleKeys": {
