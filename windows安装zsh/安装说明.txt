@@ -1,0 +1,53 @@
+========================================
+MSYS2 安装和配置指南
+========================================
+
+由于自动下载失败，请按以下步骤手动安装：
+
+【步骤 1: 下载 MSYS2】
+1. 浏览器应该已经打开 MSYS2 官网
+2. 如果没有，请访问: https://www.msys2.org/
+3. 点击下载按钮，下载最新版本的安装程序
+   或者访问: https://github.com/msys2/msys2-installer/releases
+
+【步骤 2: 安装 MSYS2】
+1. 运行下载的安装程序 (msys2-x86_64-latest.exe)
+2. 使用默认安装路径: C:\msys64
+3. 完成安装向导
+
+【步骤 3: 首次更新 MSYS2】
+1. 打开 MSYS2 MSYS 终端 (从开始菜单)
+2. 运行以下命令更新系统:
+   pacman -Syu
+3. 如果提示关闭终端，关闭后重新打开，再次运行:
+   pacman -Syu
+
+【步骤 4: 配置 MSYS2 使用 Windows 的 Git 和 Python】
+运行配置脚本:
+  .\configure_msys2.ps1
+
+这个脚本会:
+- 自动检测 Windows 上的 Git 和 Python
+- 配置 MSYS2 使其能够调用它们
+- 创建 .bashrc 和 .zshrc 配置文件
+
+【步骤 5: 验证配置】
+打开 MSYS2 终端，运行:
+  git --version
+  python --version
+
+【步骤 6: 安装 oh-my-zsh (可选)】
+1. 在 MSYS2 终端中安装 zsh:
+   pacman -S zsh curl
+
+2. 安装 oh-my-zsh:
+   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+3. 配置脚本已经创建了 .zshrc，安装后即可使用
+
+【快速启动 MSYS2】
+运行: .\start_msys2.ps1
+
+========================================
+如有问题，请查看: MSYS2_安装配置说明.md
+========================================
