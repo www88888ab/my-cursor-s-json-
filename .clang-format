@@ -10,3 +10,13 @@ AllowShortBlocksOnASingleLine: false
 AllowShortFunctionsOnASingleLine: None
 
 SortIncludes: false
+
+# 行长度限制，0表示不限制（允许参数和赋值在一行）
+ColumnLimit: 0
+
+# 允许参数打包在一行
+BinPackArguments: true
+BinPackParameters: true
+
+# 不允许所有参数都换到下一行
+AllowAllParametersOfDeclarationOnNextLine: false
