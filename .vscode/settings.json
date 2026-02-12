@@ -61,7 +61,7 @@
     // 护眼色背景配置（优化版：米色护眼方案）
     "workbench.colorCustomizations": {
         // 编辑器背景色 - 更浅的米色护眼色（更柔和，类似纸张，减少视觉疲劳）
-        "editor.background": "#FFFFFF",
+        "editor.background": "#FEFEF8",
         // 编辑器文字颜色 - 深棕色，对比度适中，更护眼
         "editor.foreground": "#3E2723",
         // 编辑器活动组背景
@@ -262,18 +262,18 @@
         "editorGroup.border": "#E8E0D5",
         "editorGroupHeader.border": "#E8E0D5",
         "sideBarSectionHeader.border": "#E8E0D5",
-        // 引用框/速览定义/速览引用 - 深色背景、浅色字，对比清晰
-        "peekViewEditor.background": "#2D2D30",
-        "peekViewEditor.foreground": "#D4D4D4",
-        "peekViewTitle.background": "#252526",
-        "peekViewTitle.foreground": "#CCCCCC",
-        "peekView.border": "#3C3C3C",
-        "peekViewEditor.matchHighlightBackground": "#4D4D40",
-        "peekViewEditor.matchHighlightBorder": "#6A6A5C",
-        "peekViewResult.background": "#252526",
-        "peekViewResult.foreground": "#D4D4D4",
-        "peekViewResult.selectionBackground": "#094771",
-        "peekViewResult.selectionForeground": "#FFFFFF"
+        // 引用框/速览定义/速览引用 - 图片中的浅绿黄护眼背景 #F0EFE0
+        "peekViewEditor.background": "#F0EFE0",
+        "peekViewEditor.foreground": "#3E2723",
+        "peekViewTitle.background": "#E8E7D8",
+        "peekViewTitle.foreground": "#3E2723",
+        "peekView.border": "#D8D7C8",
+        "peekViewEditor.matchHighlightBackground": "#E0DFD0",
+        "peekViewEditor.matchHighlightBorder": "#6D4C41",
+        "peekViewResult.background": "#E8E7D8",
+        "peekViewResult.foreground": "#3E2723",
+        "peekViewResult.selectionBackground": "#E0DFD0",
+        "peekViewResult.selectionForeground": "#3E2723"
     },
     // 编辑器语法高亮颜色（适配护眼色背景）
     "editor.tokenColorCustomizations": {
@@ -350,6 +350,15 @@
             },
             {
                 "scope": [
+                    "variable.other.member",
+                    "support.variable"
+                ],
+                "settings": {
+                    "foreground": "#8D6E63"
+                }
+            },
+            {
+                "scope": [
                     "entity.name.type",
                     "support.type"
                 ],
@@ -358,6 +367,12 @@
                 }
             }
         ]
+    },
+    "editor.semanticTokenColorCustomizations": {
+        "rules": {
+            "property": "#8D6E63",
+            "variable:member": "#8D6E63"
+        }
     },
     // C/C++ IntelliSense 配置
     // 让 cpptools 不抢语义/跳转，全部交给 clangd
