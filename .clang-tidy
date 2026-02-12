@@ -1,0 +1,8 @@
+# clang-tidy 配置：与 .clang-format 配合的代码风格
+# 规则：if / else / for / while 等控制语句必须使用大括号 {}
+
+Checks: '-*,readability-braces-around-statements'
+WarningsAsErrors: ''
+FormatStyle: file
+# 使用项目根目录的 .clang-format
+HeaderFilter: ''

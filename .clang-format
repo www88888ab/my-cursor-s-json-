@@ -1,12 +1,17 @@
+# 设为 false 时，clangd 不进行格式化（可避免保存时被自动格式化）
+DisableFormat: false
 BasedOnStyle: LLVM
 
 IndentWidth: 4
 TabWidth: 4
 UseTab: Never
 
+# Allman 风格：{ 和 } 单独一行
 BreakBeforeBraces: Allman
-
+# 不允许将短块放在一行
 AllowShortBlocksOnASingleLine: false
+# 不允许将短 if 语句放在一行
+AllowShortIfStatementsOnASingleLine: false
 AllowShortFunctionsOnASingleLine: None
 
 SortIncludes: false

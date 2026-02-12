@@ -1,0 +1,20 @@
+# clangd 配置：「转到定义 / 查找引用」(F12 / Shift+F12) 更稳定
+# 在 compile_commands.json 中，用这里的头文件路径和宏做自定义分组
+
+CompileFlags:
+  Add:
+    - -std=c11
+    - -DUSE_HAL_DRIVER
+    - -DSTM32L431xx
+    - -D__weak=__attribute__((weak))
+    - -D__packed=__attribute__((__packed__))
+    - -Imud_layer_interface_plungeInto_meter/Core/Inc
+    - -Imud_layer_interface_plungeInto_meter/Drivers/STM32L4xx_HAL_Driver/Inc
+    - -Imud_layer_interface_plungeInto_meter/Drivers/STM32L4xx_HAL_Driver/Inc/Legacy
+    - -Imud_layer_interface_plungeInto_meter/Drivers/CMSIS/Device/ST/STM32L4xx/Include
+    - -Imud_layer_interface_plungeInto_meter/Drivers/CMSIS/Include
+  Remove: []
+
+# 后台索引：包含业务代码和 STM32 HAL/CMSIS 库，引用更全
+Index:
+  Background: Build

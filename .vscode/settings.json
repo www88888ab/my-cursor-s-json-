@@ -52,8 +52,8 @@
     "terminal.integrated.encoding": "utf8",
     // Git 配置 - 确保使用 Windows Git（不会影响仓库）
     "git.path": "C:\\Program Files\\Git\\cmd\\git.exe",
-    // 文件编码设置
-    "files.encoding": "utf8",
+    // 文件编码设置（默认用 GB2312 打开/保存，便于 .c 等源文件中文显示）
+    "files.encoding": "gb2312",
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 1000,
     // 禁用Insert键切换覆盖模式（解决替换模式问题）
@@ -61,7 +61,7 @@
     // 护眼色背景配置（优化版：米色护眼方案）
     "workbench.colorCustomizations": {
         // 编辑器背景色 - 更浅的米色护眼色（更柔和，类似纸张，减少视觉疲劳）
-        "editor.background": "#FEFEF8",
+        "editor.background": "#FFFFFF",
         // 编辑器文字颜色 - 深棕色，对比度适中，更护眼
         "editor.foreground": "#3E2723",
         // 编辑器活动组背景
@@ -117,13 +117,14 @@
         "dropdown.listBackground": "#FEFEF8",
         "dropdown.border": "#E8E0D5",
         // 编辑器相关 - 降低高亮透明度，确保文字清晰可见
-        "editor.lineHighlightBackground": "#F9F9F040",
+        "editor.lineHighlightBackground": "#F0F0F0",
         "editor.selectionBackground": "#E0D7C0A0",
         "editor.selectionHighlightBackground": "#D8CCB880",
         "editorCursor.foreground": "#3E2723",
         "editorCursor.background": "#FEFEF8",
         "editorLineNumber.foreground": "#8D6E63",
         "editorLineNumber.activeForeground": "#3E2723",
+        "editorGutter.background": "#E5E5E5",
         "editorIndentGuide.background": "#E8E0D5",
         "editorIndentGuide.activeBackground": "#D5C9BC",
         "editorWhitespace.foreground": "#F5F0E8",
@@ -260,7 +261,19 @@
         // 分割线
         "editorGroup.border": "#E8E0D5",
         "editorGroupHeader.border": "#E8E0D5",
-        "sideBarSectionHeader.border": "#E8E0D5"
+        "sideBarSectionHeader.border": "#E8E0D5",
+        // 引用框/速览定义/速览引用 - 深色背景、浅色字，对比清晰
+        "peekViewEditor.background": "#2D2D30",
+        "peekViewEditor.foreground": "#D4D4D4",
+        "peekViewTitle.background": "#252526",
+        "peekViewTitle.foreground": "#CCCCCC",
+        "peekView.border": "#3C3C3C",
+        "peekViewEditor.matchHighlightBackground": "#4D4D40",
+        "peekViewEditor.matchHighlightBorder": "#6A6A5C",
+        "peekViewResult.background": "#252526",
+        "peekViewResult.foreground": "#D4D4D4",
+        "peekViewResult.selectionBackground": "#094771",
+        "peekViewResult.selectionForeground": "#FFFFFF"
     },
     // 编辑器语法高亮颜色（适配护眼色背景）
     "editor.tokenColorCustomizations": {
@@ -360,16 +373,20 @@
     "editor.formatOnSave": true,
     // 默认格式化程序设置（使用 clangd 扩展）
     "[c]": {
-        "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
+        "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
+        "editor.formatOnSave": true
     },
     "[cpp]": {
-        "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
+        "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
+        "editor.formatOnSave": true
     },
     "[h]": {
-        "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
+        "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
+        "editor.formatOnSave": true
     },
     "[hpp]": {
-        "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
+        "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
+        "editor.formatOnSave": true
     },
     "C_Cpp.default.browse.limitSymbolsToIncludedHeaders": false,
     "C_Cpp.default.systemIncludePath": [],
