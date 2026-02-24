@@ -54,6 +54,7 @@
     "git.path": "C:\\Program Files\\Git\\cmd\\git.exe",
     // 文件编码设置（默认用 GB2312 打开/保存，便于 .c 等源文件中文显示）
     "files.encoding": "gb2312",
+    //   "files.encoding": "utf8", 如果原工程是UTF-8 那么启用此行
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 1000,
     // 禁用Insert键切换覆盖模式（解决替换模式问题）
