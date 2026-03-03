@@ -6,6 +6,8 @@
 用法（在仓库根目录执行）:
   python iar_to_compile_commands.py
   python iar_to_compile_commands.py path/to/project.ewp
+  python iar_to_compile_commands.py --chip L471         # L 系列，覆盖 .ewp 里的芯片宏
+  python iar_to_compile_commands.py --chip F103         # F 系列
   python iar_to_compile_commands.py -o compile_commands.json
 """
 
@@ -80,6 +82,50 @@ def parse_ewp(ewp_path, repo_root):
     return defines, include_dirs, c_sources
 
 
+def parse_chip_arg(chip_str):
+    """
+    解析 --chip 参数，支持 L 系列（如 L476）和 F 系列（如 F103）。
+    返回 (series, number) 或 None（格式错误时）。
+    """
+    if not chip_str or len(chip_str) < 2:
+        return None
+    series = chip_str[0].upper()
+    if series not in ("L", "F"):
+        return None
+    if not chip_str[1:].isdigit():
+        return None
+    return (series, chip_str[1:])
+
+
+def apply_chip_define(defines, chip):
+    """
+    若指定 chip（如 L476、F103），则把 defines 中对应系列的芯片宏统一为 STM32{series}{number}xx。
+    """
+    if not chip:
+        return list(defines)
+    parsed = parse_chip_arg(chip)
+    if not parsed:
+        return list(defines)
+    series, number = parsed
+    chip_define = "STM32{}{}xx".format(series, number)
+    if series == "L":
+        pattern = re.compile(r"STM32L\d+xx")
+    else:
+        pattern = re.compile(r"STM32F\d+xx")
+    out = []
+    replaced = False
+    for d in defines:
+        if pattern.match(d):
+            if not replaced:
+                out.append(chip_define)
+                replaced = True
+            continue
+        out.append(d)
+    if not replaced:
+        out.append(chip_define)
+    return out
+
+
 def build_entries(repo_root, defines, include_dirs, c_sources):
     directory = str(repo_root.resolve())
     extra = [
@@ -104,6 +150,12 @@ def main():
     parser.add_argument("ewp", nargs="?", default=None, help=".ewp 文件路径，不填则自动查找")
     parser.add_argument("-o", "--out", default="compile_commands.json", help="输出文件路径")
     parser.add_argument("--repo", default=".", help="仓库根目录")
+    parser.add_argument(
+        "--chip",
+        default=None,
+        metavar="Sxxx",
+        help="芯片型号：L 系列如 L476、L431，F 系列如 F103、F407，覆盖 .ewp 中的芯片宏（仅用于 compile_commands.json）",
+    )
     args = parser.parse_args()
 
     repo_root = Path(args.repo).resolve()
@@ -124,6 +176,16 @@ def main():
         print("使用工程:", ewp_path, file=sys.stderr)
 
     defines, include_dirs, c_sources = parse_ewp(ewp_path, repo_root)
+    if args.chip:
+        parsed = parse_chip_arg(args.chip)
+        if not parsed:
+            print("错误: --chip 格式应为 L 或 F 系列+型号，如 L476、F103，当前为: {}".format(args.chip), file=sys.stderr)
+            return 1
+        defines = apply_chip_define(defines, args.chip)
+        chip_define = "STM32{}{}xx".format(parsed[0], parsed[1])
+        print("芯片宏已设为: {} (--chip {})".format(chip_define, args.chip), file=sys.stderr)
+    else:
+        print("提示: 未指定 --chip，若需按具体型号索引可添加如 --chip L476 或 --chip F103", file=sys.stderr)
     print("宏:", len(defines), "包含:", len(include_dirs), "C 文件:", len(c_sources), file=sys.stderr)
 
     entries = build_entries(repo_root, defines, include_dirs, c_sources)
