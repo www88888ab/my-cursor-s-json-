@@ -53,8 +53,8 @@
     // Git 配置 - 确保使用 Windows Git（不会影响仓库）
     "git.path": "C:\\Program Files\\Git\\cmd\\git.exe",
     // 文件编码设置（默认用 GB2312 打开/保存，便于 .c 等源文件中文显示）
-   // "files.encoding": "gb2312",
-      "files.encoding": "utf8",// 如果原工程是UTF-8 那么启用此行
+    "files.encoding": "gb2312",
+    //   "files.encoding": "utf8",// 如果原工程是UTF-8 那么启用此行
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 1000,
     // 禁用Insert键切换覆盖模式（解决替换模式问题）
@@ -181,44 +181,108 @@
     "editor.tokenColorCustomizations": {
         "textMateRules": [
             {
-                "scope": ["comment", "punctuation.definition.comment"],
-                "settings": { "foreground": "#6F625C", "fontStyle": "italic" }
+                "scope": [
+                    "comment",
+                    "punctuation.definition.comment"
+                ],
+                "settings": {
+                    "foreground": "#6F625C",
+                    "fontStyle": "italic"
+                }
             },
             {
-                "scope": ["keyword", "storage.type", "storage.modifier"],
-                "settings": { "foreground": "#2F6FDB", "fontStyle": "bold" }
+                "scope": [
+                    "keyword",
+                    "storage.type",
+                    "storage.modifier"
+                ],
+                "settings": {
+                    "foreground": "#2F6FDB",
+                    "fontStyle": "bold"
+                }
             },
             {
-                "scope": ["string", "string.quoted", "string.template"],
-                "settings": { "foreground": "#8A3D1A" }
+                "scope": [
+                    "string",
+                    "string.quoted",
+                    "string.template"
+                ],
+                "settings": {
+                    "foreground": "#8A3D1A"
+                }
             },
             {
-                "scope": ["constant.numeric", "constant.language", "constant.character"],
-                "settings": { "foreground": "#8A5A00" }
+                "scope": [
+                    "constant.numeric",
+                    "constant.language",
+                    "constant.character"
+                ],
+                "settings": {
+                    "foreground": "#8A5A00"
+                }
             },
             {
-                "scope": ["entity.name.function", "support.function"],
-                "settings": { "foreground": "#1E5BB8", "fontStyle": "bold" }
+                "scope": [
+                    "entity.name.function",
+                    "support.function"
+                ],
+                "settings": {
+                    "foreground": "#1E5BB8",
+                    "fontStyle": "bold"
+                }
             },
             {
-                "scope": ["entity.name.type", "support.type", "storage.type.class", "storage.type.struct", "storage.type.enum"],
-                "settings": { "foreground": "#7B2CBF", "fontStyle": "bold" }
+                "scope": [
+                    "entity.name.type",
+                    "support.type",
+                    "storage.type.class",
+                    "storage.type.struct",
+                    "storage.type.enum"
+                ],
+                "settings": {
+                    "foreground": "#7B2CBF",
+                    "fontStyle": "bold"
+                }
             },
             {
-                "scope": ["variable.parameter"],
-                "settings": { "foreground": "#3B2C26" }
+                "scope": [
+                    "variable.parameter"
+                ],
+                "settings": {
+                    "foreground": "#3B2C26"
+                }
             },
             {
-                "scope": ["variable.other.member", "support.variable", "property"],
-                "settings": { "foreground": "#6B5A52" }
+                "scope": [
+                    "variable.other.member",
+                    "support.variable",
+                    "property"
+                ],
+                "settings": {
+                    "foreground": "#6B5A52"
+                }
             },
             {
-                "scope": ["entity.name.constant", "constant.other", "variable.other.constant"],
-                "settings": { "foreground": "#1F7A4D", "fontStyle": "bold" }
+                "scope": [
+                    "entity.name.constant",
+                    "constant.other",
+                    "variable.other.constant"
+                ],
+                "settings": {
+                    "foreground": "#1F7A4D",
+                    "fontStyle": "bold"
+                }
             },
             {
-                "scope": ["entity.name.macro", "meta.preprocessor", "keyword.control.import"],
-                "settings": { "foreground": "#0B6B6B", "fontStyle": "bold" }
+                "scope": [
+                    "entity.name.macro",
+                    "meta.preprocessor",
+                    "keyword.control.import"
+                ],
+                "settings": {
+                    "foreground": "#0B6B6B",
+                    "fontStyle": "bold"
+                }
             }
         ]
     },
@@ -301,7 +365,7 @@
     "C_Cpp.disableAutomaticInstallation": true,
     // clangd 配置
     // clangd 已通过 MSYS2 安装
-    "clangd.path": "C:\\msys64\\mingw64\\bin\\clangd.exe",
+    "clangd.path": "C:\\Program Files\\LLVM\\bin\\clangd.exe",
     "clangd.arguments": [
         "--background-index",
         "--clang-tidy",
