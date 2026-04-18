@@ -1,0 +1,62 @@
+---
+description: C 花括号与控制流换行（左大括号独占一行）
+globs:
+  - "**/*.c"
+  - "**/*.h"
+alwaysApply: false
+---
+
+# C 花括号与布局
+
+编写或修改 `.c` / `.h` 时，凡需使用复合语句的 **`if`、`else`、`else if`、`while`、`for`、`do`…`while`、`switch`**，**左花括号 `{` 单独占一行**；右花括号 `}` 单独占一行，与对应控制关键字对齐层级。
+
+**函数定义**的 `{`、`}` 同样采用「左大括号独占一行」。
+
+## 推荐写法（示例）
+
+```c
+if (cond)
+{
+    stmt;
+}
+else if (other)
+{
+    stmt;
+}
+else
+{
+    stmt;
+}
+
+while (cond)
+{
+    stmt;
+}
+
+for (i = 0; i < n; i++)
+{
+    stmt;
+}
+
+switch (v)
+{
+case 0:
+    break;
+default:
+    break;
+}
+
+void Foo(void)
+{
+    /* ... */
+}
+```
+
+## 避免
+
+- 将 `{` 写在 `if (...) {` 同一行（K&R 一行左括号风格）——与本规则冲突。
+- 在本仓库**新写**代码中混用两种括号风格；维护旧文件时，若仅局部修改，可与该文件原有风格一致，避免无关大范围重排。
+
+## 与其它规则
+
+命名约定见 **`c-naming-conventions.mdc`**；注释见 **`c-doc-comments.mdc`**。完整摘要见 **`docs/C_CODING_STANDARD.md`**。

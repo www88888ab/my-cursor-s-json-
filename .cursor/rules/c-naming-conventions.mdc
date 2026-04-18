@@ -1,0 +1,38 @@
+---
+description: C 代码命名规范（函数/类型/变量/宏/常量及模块前缀）
+globs:
+  - "**/*.c"
+  - "**/*.h"
+alwaysApply: false
+---
+
+# C 命名规范
+
+编写或修改 `.c` / `.h` 时严格遵守下表。
+
+| 类别 | 风格 | 形式示例 |
+|------|------|----------|
+| 函数；`struct` / `enum` / `union` / `typedef` 类型名 | UpperCamelCase；可选用模块前缀 | `DoSomething`，`XXX_DoSomething` |
+| 局部变量；函数参数；宏形参；结构体/联合体成员 | lowerCamelCase | `byteCount`，`readOffset` |
+| 全局变量（函数外定义） | `g_` + lowerCamelCase | `g_deviceState` |
+| 对象式宏（非类函数宏）；枚举常量；`goto` 标签 | `ALL_CAPS` + 下划线 | `MAX_RETRY`，`STATE_IDLE` |
+| 类函数宏 | `ALL_CAPS` + 下划线 | `CLAMP(x, lo, hi)` |
+| 常量（基本类型/枚举/字符串，函数外，`const` 限定） | `ALL_CAPS` + 下划线 | `BUFFER_SIZE` |
+
+## 模块前缀（可选）
+
+- 仅用于 **UpperCamelCase** 符号（如对外函数、类型名），不是必须加。
+- 前缀尽量短，**层级不超过两级**，例如：`XXX_YYY_AaaBbb`（`XXX`、`YYY` 为两级模块前缀，后面接 PascalCase 主体）。
+
+## 编写代码时
+
+- 新符号按上表命名；改旧代码时，若仅小改，可与文件现有风格一致；新增 API 优先按本规范。
+- 避免在应用本规则的符号上混用 `snake_case` 与规范冲突（除非与第三方 HAL/SDK 类型/宏一致而必须保留）。
+
+## 花括号布局
+
+`if` / `else` / `while` / `for` / `switch` 及函数体：**左 `{` 独占一行**，见 **`c-brace-layout.mdc`**。
+
+## 注释
+
+对外 API、**结构体/枚举成员、配置宏、`extern` 全局**等的注释要求（含改写时须同步补齐）见 **`c-doc-comments.mdc`**；人类可读全文见 **`docs/C_CODING_STANDARD.md`**。
