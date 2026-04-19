@@ -1,4 +1,4 @@
-# 设为 false 时，clangd 不进行格式化（可避免保存时被自动格式化）
+# 设为 false 时，clangd 不进行格式化（可避免保存时�??�?动格式化�?
 DisableFormat: false
 BasedOnStyle: LLVM
 
@@ -6,35 +6,35 @@ IndentWidth: 4
 TabWidth: 4
 UseTab: Never
 
-# Allman 风格：{ 和 } 单独一行
+# Allman 风格：{ �? } 单独一�?
 BreakBeforeBraces: Allman
-# 不允许将短块放在一行
+# 不允许将�?块放在一�?
 AllowShortBlocksOnASingleLine: false
-# 不允许将短 if 语句放在一行
+# 不允许将�? if �?句放在一�?
 AllowShortIfStatementsOnASingleLine: false
 AllowShortFunctionsOnASingleLine: None
 
 SortIncludes: false
 
-# 行长度限制，0表示不限制（允许参数和赋值在一行）
+# 行长度限制，0表示不限制（允�?�参数和赋值在一行）
 ColumnLimit: 0
 
-# 允许参数打包在一行
+# 允�?�参数打包在一�?
 BinPackArguments: true
 BinPackParameters: true
 
-# 不允许所有参数都换到下一行
+# 不允许所有参数都换到下一�?
 AllowAllParametersOfDeclarationOnNextLine: false
 
-# 对齐连续的宏定义，保持 #define 的值垂直对齐
+# 对齐连续的宏定义，保�? #define 的值垂直�?�齐
 AlignConsecutiveMacros: Consecutive
 
-# 不全局对齐 = （AlignConsecutiveAssignments 会同时影响 .c 和 enum，无法只针对 enum）
-# enum 中的 = 请用 // clang-format off/on 包裹后手动对齐
+# 不全局对齐 = （AlignConsecutiveAssignments 会同时影�? .c �? enum，无法只针�?? enum�?
+# enum �?�? = 请用 // clang-format off/on 包裹后手动�?�齐
 
-# SpacesInLineComment 仅在 ReflowComments 非 Never 时生效
+# SpacesInLineComment 仅在 ReflowComments �? Never 时生�?
 ReflowComments: Always
-# 注释中 // 后面不添加空格，文字紧接 //
+# 注释�? // 后面不添加空格，文字紧接 //
 SpacesInLineCommentPrefix:
   Minimum: 0
   Maximum: 0

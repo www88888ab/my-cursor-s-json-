@@ -1,8 +1,38 @@
-# clang-tidy 配置：与 .clang-format 配合的代码风格
-# 规则：if / else / for / while 等控制语句必须使用大括号 {}
+# clang-tidy: brace style + MISRA-oriented bugprone/cert (see .cursor/rules/c-misra-static-analysis.mdc)
+# LLVM does not map checks to MISRA rule numbers; use Cppcheck --addon=misra for rule IDs.
 
-Checks: '-*,readability-braces-around-statements'
-WarningsAsErrors: ''
+Checks: >
+  -*,
+  readability-braces-around-statements,
+  bugprone-assert-side-effect,
+  bugprone-infinite-loop,
+  bugprone-macro-parentheses,
+  bugprone-misplaced-widening-cast,
+  bugprone-no-escape,
+  bugprone-not-null-terminated-result,
+  bugprone-reserved-identifier,
+  bugprone-signal-handler,
+  bugprone-sizeof-expression,
+  bugprone-suspicious-include,
+  bugprone-suspicious-memory-comparison,
+  bugprone-suspicious-memset-usage,
+  bugprone-suspicious-missing-comma,
+  bugprone-suspicious-semicolon,
+  bugprone-suspicious-string-compare,
+  bugprone-too-small-loop-variable,
+  bugprone-undefined-memory-manipulation,
+  bugprone-unused-return-value,
+  bugprone-posix-return,
+  cert-dcl03-c,
+  cert-dcl37-c,
+  cert-err34-c,
+  cert-env33-c,
+  cert-flp30-c,
+  cert-msc30-c,
+  cert-msc32-c,
+  cert-msc33-c,
+  cert-pos44-c,
+  cert-sig30-c,
+  cert-str34-c
 FormatStyle: file
-# 使用项目根目录的 .clang-format
-HeaderFilter: ''
+HeaderFilterRegex: ""

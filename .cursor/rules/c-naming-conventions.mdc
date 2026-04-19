@@ -26,6 +26,7 @@ alwaysApply: false
 
 ## 编写代码时
 
+- 生成代码尽量满足 MISRA（便于 **IAR C-STAT**）的写法取向见 **`c-misra-static-analysis.mdc`**。
 - 新符号按上表命名；改旧代码时，若仅小改，可与文件现有风格一致；新增 API 优先按本规范。
 - 避免在应用本规则的符号上混用 `snake_case` 与规范冲突（除非与第三方 HAL/SDK 类型/宏一致而必须保留）。
 

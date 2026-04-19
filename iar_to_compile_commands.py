@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
 """
-Convert IAR EWARM .ewp project to compile_commands.json for clangd.
+Convert IAR EWARM .ewp project to compile_commands.json for clangd / clang-tidy.
 
-This script is designed to improve symbol index accuracy in Cursor/VSCode,
-so features like F12 (Go to Definition) can work reliably.
+The real firmware build uses IAR (EWARM); this script does NOT reproduce the
+IAR compiler command line. It emits a clang + arm-none-eabi surrogate so editors
+and LLVM-based tools get include paths and defines that are close enough for
+navigation and optional static analysis.
 """
 
 import argparse
 import json
+import os
 import re
 import sys
 import xml.etree.ElementTree as ET
@@ -172,12 +175,31 @@ def parse_project(
     return list(dict.fromkeys(defines)), includes, sources
 
 
+def resolve_gcc_toolchain(explicit: Optional[str]) -> Optional[Path]:
+    """Root directory of GNU Arm Embedded (contains bin/arm-none-eabi-gcc and arm-none-eabi/include)."""
+    if explicit:
+        text = explicit.strip()
+        if text:
+            p = Path(text).resolve()
+            if p.is_dir():
+                return p
+    for key in ("ARM_GNU_GCC_TOOLCHAIN", "GNU_ARM_TOOLCHAIN_PATH", "ARM_TOOLCHAIN_ROOT"):
+        raw = os.environ.get(key, "").strip()
+        if not raw:
+            continue
+        p = Path(raw).resolve()
+        if p.is_dir():
+            return p
+    return None
+
+
 def build_entries(
     repo_root: Path,
     defines: Sequence[str],
     includes: Sequence[Path],
     sources: Sequence[Path],
     input_charset: str,
+    gcc_toolchain: Optional[Path],
 ) -> List[Dict[str, object]]:
     directory = repo_root.resolve().as_posix()
     common_args = [
@@ -189,11 +211,17 @@ def build_entries(
         "arm-none-eabi",
         "-mcpu=cortex-m4",
         "-mthumb",
-        f"-finput-charset={input_charset}",
-        "-D__weak=__attribute__((weak))",
-        "-D__packed=__attribute__((__packed__))",
-        "-D__STATIC_INLINE=static inline",
     ]
+    if gcc_toolchain is not None:
+        common_args.append(f"--gcc-toolchain={gcc_toolchain.as_posix()}")
+    common_args.append(f"-finput-charset={input_charset}")
+    common_args.extend(
+        [
+            "-D__weak=__attribute__((weak))",
+            "-D__packed=__attribute__((__packed__))",
+            "-D__STATIC_INLINE=static inline",
+        ]
+    )
     common_args.extend(f"-D{item}" for item in defines)
     common_args.extend(f"-I{item.as_posix()}" for item in includes)
 
@@ -220,7 +248,17 @@ def main() -> int:
     parser.add_argument("-o", "--out", default="compile_commands.json", help="Output JSON path")
     parser.add_argument("--config", default=None, help="IAR configuration name")
     parser.add_argument("--chip", default=None, help="Override STM32 family define, e.g. L431 or F103")
-    parser.add_argument("--input-charset", default="gbk", help="Source file charset for clang")
+    parser.add_argument(
+        "--input-charset",
+        default="UTF-8",
+        help="Source file charset for clang (use UTF-8 for LLVM; 'gbk' is often rejected)",
+    )
+    parser.add_argument(
+        "--gcc-toolchain",
+        default=None,
+        help="GNU Arm Embedded toolchain root (parent of arm-none-eabi/). "
+        "Also reads env ARM_GNU_GCC_TOOLCHAIN / GNU_ARM_TOOLCHAIN_PATH / ARM_TOOLCHAIN_ROOT.",
+    )
     args = parser.parse_args()
 
     repo_root = Path(args.repo).resolve()
@@ -258,7 +296,13 @@ def main() -> int:
     if not include_dirs:
         print("Warning: no include directories extracted from .ewp", file=sys.stderr)
 
-    entries = build_entries(repo_root, defines, include_dirs, sources, args.input_charset)
+    toolchain = resolve_gcc_toolchain(args.gcc_toolchain)
+    if toolchain is None:
+        print(
+            "Warning: no --gcc-toolchain / ARM_GNU_GCC_TOOLCHAIN: clang-tidy may miss <math.h> and libc headers.",
+            file=sys.stderr,
+        )
+    entries = build_entries(repo_root, defines, include_dirs, sources, args.input_charset, toolchain)
 
     out_path = Path(args.out)
     if not out_path.is_absolute():
